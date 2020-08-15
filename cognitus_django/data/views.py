@@ -14,7 +14,7 @@ from .serializers import DataSerializer, PredictionSerializer
 
 
 class DataSchema(AutoSchema):
-    manual_fields = []  # common fields
+    manual_fields = []
 
     def get_manual_fields(self, path, method):
         custom_fields = []
@@ -37,7 +37,7 @@ class DataSchema(AutoSchema):
 
 
 class PredictSchema(AutoSchema):
-    manual_fields = []  # common fields
+    manual_fields = []
 
     def get_manual_fields(self, path, method):
         custom_fields = [
