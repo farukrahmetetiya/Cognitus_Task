@@ -77,31 +77,31 @@ WSGI_APPLICATION = 'cognitus_django.wsgi.application'
 
 
 #locale
-DATABASES = {
-    'default': {
-        'NAME': 'cognitus',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'USER': 'postgres',
-        'PASSWORD': '199421812',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    },
-}
-
-REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
-
-#docker
 # DATABASES = {
 #     'default': {
 #         'NAME': 'cognitus',
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'db',
+#         'PASSWORD': '199421812',
+#         'HOST': '127.0.0.1',
 #         'PORT': '5432',
 #     },
 # }
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
+
+#docker
+DATABASES = {
+    'default': {
+        'NAME': 'cognitus',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
+    },
+}
 
 
 # Password validation

@@ -24,7 +24,7 @@ def dump_model(model, file_output):
     pickle.dump(model, open(file_output, 'wb'))
 
 
-@celery.task(name='train.train_task')
+@celery.task(name='train.train_celery')
 def train(text, label):
     training, vectorizer = tfidf(text)
     x_train, x_test, y_train, y_test = train_test_split(
