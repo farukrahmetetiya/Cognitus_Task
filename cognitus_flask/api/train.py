@@ -13,7 +13,7 @@ def Train():
     texts, labels= get_data()
     # 2. train servisine git bu datayı ona ver.
     # 3. kullanıcıya status start traning dön.
-    if texts and labels and len(texts) > 3:
+    if texts and labels and len(texts) > 3 and not len(set(labels)) == 1:
         t = train.apply_async(args=[texts, labels])
     else:
         return 'Lütfen Train için veri ekleyin'

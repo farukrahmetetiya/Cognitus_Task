@@ -5,7 +5,7 @@ from .models import Data
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
             model = Data
-            fields = ['text', 'label']
+            fields = '__all__'
 
 
 class PredictionSerializer(serializers.Serializer):

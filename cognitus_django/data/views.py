@@ -2,6 +2,8 @@ import requests
 import json
 import coreapi
 
+from django.http import HttpResponseRedirect
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -12,6 +14,9 @@ from rest_framework.schemas import AutoSchema
 from .models import Data
 from .serializers import DataSerializer, PredictionSerializer
 
+
+def redirect_url(request):
+    return HttpResponseRedirect('/docs')
 
 class DataSchema(AutoSchema):
     manual_fields = []
@@ -106,15 +111,10 @@ class Prediction(APIView):
     serializer_class = PredictionSerializer
 
     def post(self, request):
-        print('data', request.data)
         text = request.data.get('text')
-        print('text', text)
         if text:
-            print(1)
             req = requests.post(
                 'http://algorithm:5000/prediction', data={'text': text})
-            print(req.status_code)
-            print(req.text)
             if req.status_code == 200:
                 label = req.json()['label']
                 # burda kayt alınabilir
@@ -132,7 +132,7 @@ class Train(APIView):
     """
     def post(self, request):
         req = requests.get('http://algorithm:5000/train')
-        if req.status_code == 200:
+        if req.status_code == 200 and req.text == 'OKEY':
             return Response('Başarılı')
         else:
             return Response(req.text)
