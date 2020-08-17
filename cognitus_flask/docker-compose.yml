@@ -1,26 +1,28 @@
 version: '3'
 services:
     algorithm:
+        image: algorithm
         build: .
         command: "python run.py"
         container_name: algorithm
+        volumes:
+        - .:/code
         ports:
             - '5000:5000'
         links:
             - redis
             - algorithm_celery
-        volumes:
-            - .:/usr/src/app:ro
 
     algorithm_celery:
+        image: algorithm_celery
         build: .
         command: "celery -A services.train.celery worker --loglevel=info"
         container_name: algorithm_celery
+        volumes:
+        - .:/code
         user: nobody
         links:
             - redis
-        volumes:
-            - .:/usr/src/app:ro
 
     redis:
         image: redis

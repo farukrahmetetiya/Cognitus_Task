@@ -35,8 +35,6 @@
         links:
             - redis
             - algorithm_celery
-        volumes:
-            - .:/usr/src/app:ro
 
     algorithm_celery:
         image: algorithm_celery
